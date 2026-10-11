@@ -1,0 +1,587 @@
+/* ===== BlogSpace: Pinterest-inspired design ===== */
+
+:root {
+    --cream: #faf6f2;
+    --white: #ffffff;
+    --pink: #ead0d7;
+    --lavender: #e5def4;
+    --plum: #382b55;
+    --purple: #7864a8;
+    --text: #302b37;
+    --muted: #827989;
+    --border: #eee5ec;
+    --danger: #b94a58;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.7;
+}
+
+header {
+    background: rgba(255, 255, 255, 0.96);
+    padding: 18px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+header h1 {
+    margin: 0;
+    color: var(--plum);
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+header a {
+    color: var(--plum);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+header a:hover,
+.card h3 a:hover {
+    color: var(--purple);
+}
+
+.hero {
+    padding: 65px 7%;
+    background: linear-gradient(120deg, #f4e8eb, #eee8fa, #fbf5ed);
+}
+
+.hero .eyebrow {
+    color: var(--purple);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.hero h2 {
+    max-width: 700px;
+    margin: 10px 0;
+    color: var(--plum);
+    font-family: Georgia, serif;
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.12;
+}
+
+.hero p {
+    max-width: 620px;
+    color: #665d70;
+    font-size: 17px;
+}
+
+.content {
+    max-width: 1250px;
+    margin: 38px auto;
+    padding: 0 24px;
+}
+
+.content h2,
+main h2 {
+    color: var(--plum);
+    font-family: Georgia, serif;
+    font-size: 30px;
+}
+
+.card,
+main {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 23px;
+    margin-bottom: 24px;
+    box-shadow: 0 5px 20px rgba(56, 43, 85, 0.06);
+}
+
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 25px rgba(56, 43, 85, 0.10);
+}
+
+.card h3 {
+    margin: 8px 0;
+    font-family: Georgia, serif;
+    font-size: 23px;
+    line-height: 1.35;
+}
+
+.card h3 a {
+    color: var(--plum);
+    text-decoration: none;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--lavender);
+    color: var(--plum);
+    border-radius: 20px;
+    padding: 3px 11px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.meta {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 7px 0 18px;
+    border: 1px solid #e1d7e4;
+    border-radius: 10px;
+    background: #fffdfd;
+    color: var(--text);
+    font: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid var(--lavender);
+    border-color: var(--purple);
+}
+
+button,
+.button {
+    display: inline-block;
+    background: var(--plum);
+    color: white;
+    padding: 11px 19px;
+    border: none;
+    border-radius: 25px;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background: var(--purple);
+    color: white;
+}
+
+.button-danger {
+    background: var(--danger);
+}
+
+footer {
+    margin-top: 55px;
+    padding: 28px 20px;
+    background: var(--plum);
+    color: white;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+    margin: 22px 0;
+}
+
+@media (max-width: 650px) {
+    header {
+        padding: 16px 20px;
+        flex-wrap: wrap;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    .hero {
+        padding: 45px 22px;
+    }
+
+    .content {
+        padding: 0 16px;
+        margin-top: 25px;
+    }
+
+    .card,
+    main {
+        padding: 18px;
+        border-radius: 13px;
+    }
+
+    .content h2,
+    main h2 {
+        font-size: 26px;
+    }
+}
+/* ===== BlogSpace homepage redesign ===== */
+
+.site-header {
+    min-height: 82px;
+    padding: 16px 7%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid #eee3eb;
+}
+
+.site-header .brand {
+    color: #382344;
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-decoration: none;
+}
+
+.site-header .brand span {
+    color: #bd789b;
+}
+
+.header-button {
+    background: #382344;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.header-button:hover {
+    background: #80639c;
+    color: #ffffff;
+}
+
+/* Hero section alignment */
+
+.hero {
+    background: linear-gradient(
+        115deg,
+        #f4e4e9 0%,
+        #eee7f7 58%,
+        #faf3ed 100%
+    );
+    padding: 65px 7%;
+}
+
+.hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.hero .eyebrow,
+.section-heading .eyebrow {
+    color: #806091;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0 0 14px;
+}
+
+.hero h1 {
+    color: #382344;
+    font-family: Georgia, serif;
+    font-size: clamp(44px, 6vw, 70px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -2px;
+    margin: 0 0 18px;
+}
+
+.hero .hero-description {
+    max-width: 510px;
+    color: #5f5366;
+    font-size: 16px;
+    margin: 0 0 25px;
+}
+
+.hero .hero-button {
+    background: #382344;
+    color: #ffffff;
+}
+
+.hero .hero-button:hover {
+    background: #80639c;
+}
+
+/* Main content */
+
+.content {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 45px 7%;
+}
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    color: #382344;
+    margin: 0 0 7px;
+}
+
+.section-description {
+    color: #827989;
+    margin: 0;
+    font-size: 14px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0 30px;
+    align-items: center;
+}
+
+.search-bar input {
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    background: #ffffff;
+    border: 1px solid #e7dce8;
+    border-radius: 30px;
+    padding: 13px 19px;
+}
+
+.search-bar button {
+    flex-shrink: 0;
+}
+
+/* Pinterest-inspired masonry layout */
+
+.pin-grid {
+    columns: 3 240px;
+    column-gap: 22px;
+}
+
+.pin-card {
+    display: inline-block;
+    width: 100%;
+    break-inside: avoid;
+    margin: 0 0 22px;
+    padding: 0;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #eee4eb;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(56, 35, 68, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pin-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(56, 35, 68, 0.12);
+}
+
+.card-decoration {
+    min-height: 90px;
+    padding: 17px;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(135deg, #ead0d9, #e9e0f4);
+    color: #513c5e;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.pin-card:nth-child(3n + 2) .card-decoration {
+    min-height: 125px;
+    background: linear-gradient(135deg, #e6dff1, #f5e7e9);
+}
+
+.pin-card:nth-child(3n) .card-decoration {
+    min-height: 105px;
+    background: linear-gradient(135deg, #f4e5d9, #e9d9e8);
+}
+
+.pin-card-content {
+    padding: 21px;
+}
+
+.card-meta {
+    color: #947b9c;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0 0 9px;
+}
+
+.pin-card h3 {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    line-height: 1.35;
+    margin: 0 0 12px;
+}
+
+.pin-card h3 a {
+    color: #382344;
+    text-decoration: none;
+}
+
+.pin-card h3 a:hover {
+    color: #a05f88;
+}
+
+.card-excerpt {
+    color: #756c7a;
+    font-size: 14px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-top: 1px solid #f0e8ef;
+    padding-top: 14px;
+    margin-top: 18px;
+    color: #938796;
+    font-size: 11px;
+}
+
+.read-link {
+    color: #805c91;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.read-link:hover {
+    color: #b36c92;
+}
+
+.empty-state {
+    text-align: center;
+    background: #ffffff;
+    padding: 45px 20px;
+    border-radius: 18px;
+    border: 1px solid #eee4eb;
+}
+
+.empty-icon {
+    font-size: 35px;
+    color: #b5799c;
+}
+
+.empty-state h3 {
+    font-family: Georgia, serif;
+    color: #382344;
+}
+
+.empty-state p {
+    color: #827989;
+}
+
+.site-footer {
+    background: #382344;
+    color: #f9f1f8;
+    padding: 25px 20px;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        padding: 15px 20px;
+    }
+
+    .site-header .brand {
+        font-size: 27px;
+    }
+
+    .header-button {
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    .hero {
+        padding: 48px 23px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .content {
+        padding: 32px 18px;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+
+    .pin-grid {
+        columns: 1;
+    }
+
+    .search-bar {
+        gap: 7px;
+    }
+
+    .search-bar button {
+        padding: 11px 14px;
+    }
+}
+/* ===== BlogSpace cover images ===== */
+
+.card-cover {
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    background: #eee4ef;
+}
+
+.card-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.pin-card:hover .card-cover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .card-cover {
+        height: 230px;
+    }
+}
+.category-tag {
+    display: inline-block;
+    background: #f3e5f0;
+    color: #754568;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}

@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogSpace | Stories That Matter</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+
+<header class="site-header">
+    <a href="{% url 'home' %}" class="brand">BlogSpace<span>.</span></a>
+    <a href="{% url 'create_post' %}" class="header-button">+ Write a Post</a>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <p class="eyebrow">YOUR LITTLE CORNER OF THE INTERNET</p>
+        <h1>Stories That<br> Matter.</h1>
+        <p class="hero-description">
+            A space for big ideas, late-night thoughts, favourite stories,
+            and everything worth sharing.
+        </p>
+        <a href="{% url 'create_post' %}" class="button hero-button">
+            Share Your Story →
+        </a>
+    </div>
+</section>
+
+<main class="content">
+    <section class="section-heading">
+        <div>
+            <p class="eyebrow">THE BLOG COLLECTION</p>
+            <h2>Explore the Stories</h2>
+            <p class="section-description">
+                Little thoughts, big feelings, and stories to get lost in.
+            </p>
+        </div>
+    </section>
+
+    <form method="GET" action="{% url 'home' %}" class="search-bar">
+        <input
+            type="search"
+            name="q"
+            placeholder="Search stories by title..."
+            value="{{ search_query }}"
+            aria-label="Search blog posts"
+        >
+        <button type="submit">Search</button>
+    </form>
+    <nav class="category-filters">
+        <a href="{% url 'home' %}"
+           class="{% if not selected_category %}active{% endif %}">
+            All Stories
+        </a>
+    
+        {% for value, label in categories %}
+            <a href="?category={{ value }}"
+               class="{% if selected_category == value %}active{% endif %}">
+                {{ label }}
+            </a>
+        {% endfor %}
+    </nav>
+
+    {% if posts %}
+        <div class="pin-grid">
+            {% for post in posts %}
+                <article class="pin-card">
+                    <div class="card-cover">
+                        {% cycle 'romance' 'thriller' 'books' 'nature' as cover_type silent %}
+                    
+                        {% if cover_type == 'romance' %}
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=700&q=80"
+                                 alt="Books and reading">
+                        {% elif cover_type == 'thriller' %}
+                            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=700&q=80"
+                                 alt="Atmospheric library">
+                        {% elif cover_type == 'books' %}
+                            <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=700&q=80"
+                                 alt="Cozy reading atmosphere">
+                        {% else %}
+                            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=700&q=80"
+                                 alt="Peaceful nature">
+                        {% endif %}
+                    </div>
+
+                    <div class="pin-card-content">
+                        <span class="category-tag">{{ post.get_category_display }}</span>
+<p class="card-meta">BY {{ post.author|upper }}</p>
+
+                        <h3>
+                            <a href="{% url 'post_detail' post.id %}">
+                                {{ post.title }}
+                            </a>
+                        </h3>
+
+                        <p class="card-excerpt">
+                            {{ post.content|truncatewords:28 }}
+                        </p>
+
+                        <div class="card-footer">
+                            <span>
+                                {{ post.created_at|date:"M d, Y" }}
+                            </span>
+                            <a href="{% url 'post_detail' post.id %}"
+                               class="read-link">
+                                Read story →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="empty-state">
+            <span class="empty-icon">♡</span>
+            <h3>
+                {% if search_query %}
+                    No stories found
+                {% else %}
+                    Your first story starts here
+                {% endif %}
+            </h3>
+            <p>
+                {% if search_query %}
+                    Try another search term.
+                {% else %}
+                    Be the first to share something wonderful.
+                {% endif %}
+            </p>
+            {% if not search_query %}
+                <a href="{% url 'create_post' %}" class="button">
+                    Write Your First Post
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+</main>
+
+<footer class="site-footer">
+    <p>BlogSpace © 2026 · A home for every story.</p>
+</footer>
+
+</body>
+</html>

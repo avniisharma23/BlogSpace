@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Post | BlogSpace</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7fb;
+            color: #22223b;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        main {
+            max-width: 550px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        button {
+            background: #dc2626;
+            color: white;
+            padding: 12px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        a {
+            color: #312e81;
+            margin-left: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Delete Blog Post?</h1>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ post.title }}</strong>?
+        </p>
+
+        <p>This action cannot be undone.</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete Post</button>
+            <a href="{% url 'post_detail' post.id %}">Cancel</a>
+        </form>
+    </main>
+</body>
+</html>
